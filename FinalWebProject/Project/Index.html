@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cassie Lease">
+    <title>Rubber Ducking</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="icon" href="Images/rubber-duck.png">
+    <link rel="stylesheet" href="css/NavStyles.css">
+    <link rel="stylesheet" href="css/indexcss.css">
+
+    <style>
+        .item1 { grid-area: header; }
+        .item2 { grid-area: menu; }
+        .item3 { grid-area: main; }
+        .item4 { grid-area: right; }
+        
+        .grid-container {
+          display: grid;
+          grid-template-areas:
+            'header header header header header header'
+            'menu menu menu menu main main'
+            'menu menu menu menu main main'
+            'right right right right right right';
+          background-color:rgb(246, 246, 156);
+        }
+        
+        .grid-container > div {
+          background-color:rgb(246, 246, 156);
+          text-align: center;
+          font-size: 20px;
+        }
+    </style>
+</head>
+<body> 
+  <!-- Navigation bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="menu-text"><h6>Rubber Ducking</h6></li>
+            <li><a href="Index.html" class="act">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li><a href="Calendar.html">Calendar</a></li>
+            <li><a href="Information.html">Duck uses</a></li>
+            <li><a href="Pictures.php">Pictures</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><img src="Images/rubber-duck.png"></li>
+            </ul>
+        </div>
+      </div>
+
+
+    <div class="grid-container">
+      <!-- Image Rotator -->
+        <div class="item1">
+            <div class="orbit" role="region" aria-label="random pictures" data-orbit>
+                <div class="orbit-wrapper">
+                  <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                  </div>
+                  <ul class="orbit-container">
+                    <li class="is-active orbit-slide">
+                      <figure class="orbit-figure">
+                        <img class="orbit-image" src="./images/ArmyOfDucks.jpg" alt="Army of ducks">
+                      </figure>
+                    </li>
+                    <li class="orbit-slide">
+                      <figure class="orbit-figure">
+                        <img class="orbit-image" src="./images/BoatDuckCity.jpg" alt="Boat duck">
+                      </figure>
+                    </li>
+                    <li class="orbit-slide">
+                      <figure class="orbit-figure">
+                        <img class="orbit-image" src="./images/DucksandBubbles.jpg" alt="Ducks with bubbles">
+                      </figure>
+                    </li>
+                    <li class="orbit-slide">
+                      <figure class="orbit-figure">
+                        <img class="orbit-image" src="./images/ducksinriver.jpg" alt="Ducks floating down a river">
+                      </figure>
+                    </li>
+                    
+                  </ul>
+                </div>
+                <nav class="orbit-bullets">
+                  <button class="is-active" data-slide="0">
+                    <span class="show-for-sr">First slide details.</span>
+                    <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                  </button>
+                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                  <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                  
+                </nav>
+              </div>
+        </div>
+
+<!-- Uses page advertisement -->
+        <div class="item2">
+          <img src="Images/TripleDuckTrain.jpg">
+          <h4>Rubber Duck Uses:</h4>
+          <p>Rubber ducks have many different uses, they can be used as toys, decoration, and many other things.</p>
+          <a href="Information.html">Click Here to see more</a>
+        </div>
+<!-- Shop Items ad -->
+        <div class="item3">
+          <img src="./Images/CaptianQuack.jpg">
+          <div class="shopText">
+            <a href="https://a.co/d/egGgt9t">CelebriDucks Captain Quack Mallard Floating Rubber Ducks - Collectible Bath Toys Gift for Kids & Adults of All Ages</a>
+            <p>Amazon rubber duck sealed bath toy. Made in the US.</p>
+            <h6><a href="Shop.html">Click here to shop other items</a></h6>
+          </div>
+        </div>
+<!-- Contact stuff -->
+        <div class="item4">
+          <div class="footer-text">
+            <p>Creator: Cassie Lease</p>
+            <p>Please contact <a href="mailto:leasecn22@juniata.edu"> leasecn22@juniata.edu</a> if any questions or concerns come up.</p>
+          </div>
+        </div>
+      </div>
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

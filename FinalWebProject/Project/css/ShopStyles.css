@@ -1,0 +1,23 @@
+.pictures {
+    box-sizing: border-box;
+  }
+  
+.column {
+    float: left;
+    height: 350px;
+    width: 33.33%;
+    padding: 5px;
+    border: 5px solid black; 
+}
+
+.column img{
+    height:255px;
+}
+  
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+

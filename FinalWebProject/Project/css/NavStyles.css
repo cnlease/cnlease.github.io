@@ -1,0 +1,39 @@
+/* Style sheet for nav bars */
+.top-bar {
+    background-color:#FFAB0E !important;
+    height:20%;
+}
+.menu {
+    background-color: #FFAB0E !important;
+}
+.menu li{
+    background-color:#FFAB0E;
+    text-transform:uppercase;
+    font-size:medium;
+    padding-top: .2%;
+}
+.menu li a{
+    color: black;
+}
+.menu li a:hover{
+    color: #59C3C3;
+}
+.menu-text {
+    color:#FFD801 !important;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.menu-text h6{
+    font-size:18px;
+}
+.top-bar-right {
+    background-color:#FFAB0E !important;
+}
+
+.act{
+    color:antiquewhite !important;
+}
+body{
+    background-color:rgb(246, 246, 156);
+}
+
+

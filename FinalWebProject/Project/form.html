@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Submit</title>
+    <style type="text/css">
+        .label,
+        label {
+            float: left;
+            display: block;
+            width: 200px;
+        }
+        
+        form>div {
+            margin-bottom: 10px; 
+        }
+        
+        div.errormsg {
+            color: red;
+        }
+    </style>
+</head>
+<script>
+    function empty(fieldName) {
+        if (!document.getElementById(fieldName).value) {
+            document.getElementById("errormsg").innerHTML = "This field needs to be completed";
+            document.getElementById(fieldName).focus();
+        }
+    }
+</script>
+<body>
+    <article>
+        <h1>Rubber Duck Picture Form</h1>
+
+        <form action="process.php" method="POST" enctype="multipart/form-data">
+            
+            <div>
+                <label for="image_dis">Discripition of the image:</div>
+                <input type="text" id="image_dis" name="image_dis" required onblur="empty('image_dis')">
+            </div>
+            <div>
+                <label for="email">Email</div>
+                <input type="email" id="email" name="email" required onblur="empty('email')">
+            </div>
+            <div>
+                <label for="images">Image:</div>
+                <input type="file" id="photos" name="images" accept="image/*" required onblur="empty('images')">
+            </div>
+            
+            <input type="submit" name="submitForm" value="Submit Registration">
+        </form>
+    </article>
+    
+</body>
+</html>

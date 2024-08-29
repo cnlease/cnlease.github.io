@@ -1,0 +1,43 @@
+.item2 p{
+    font-size: 20px;
+}
+.item2{
+    /* width: 80%; */
+    height:fit-content;
+    text-wrap: pretty;
+    width: 80%;
+}
+
+
+.item3{
+    padding-left: 30px;
+    background-color: white !important;
+    text-wrap: pretty;
+    padding-right:10%;
+}
+
+.item3 img{
+    float:left;
+    padding-left: 10%;
+}
+
+a{
+    color: black;  
+}
+a:hover{
+    color: #FF7B9C;
+}
+
+.item4 p{
+    font-size: small;
+    text-align:left !important;
+}
+.footer-text{
+    padding-top: 5px;
+}
+
+.item3 a{
+    color: #FF7B9C;
+}
+
+

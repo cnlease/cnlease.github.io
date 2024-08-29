@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style type="text/css">
+        .label,
+        label {
+            float: left;
+            display: block;
+            width: 200px;
+        }
+        
+        form>div {
+            margin-bottom: 10px; 
+        }
+        
+        div.errormsg {
+            color: red;
+        }
+    </style>
+
+</head>
+<script>
+    function empty(fieldName) {
+        if (!document.getElementById(fieldName).value) {
+            document.getElementById("errormsg").innerHTML = "This field needs to be completed";
+            document.getElementById(fieldName).focus();
+        }
+    }
+</script>
+<body>
+    
+    <form method="post" action="list.php">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <br>
+
+        <input type="submit" value="Sign In">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!--Information page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Uses</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" href="Images/rubber-duck.png">
+    <link rel="stylesheet" href="css/NavStyles.css">
+
+    <style>
+      .item1 { grid-area: header; }
+      .item2 { grid-area: menu; }
+      .item3 { grid-area: pic;}
+
+      
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          'header header header header header header'
+          'pic pic menu menu menu menu';
+        background-color:rgb(246, 246, 156);
+      }
+      
+      .grid-container > div {
+        background-color:rgb(246, 246, 156);
+        text-align: center;
+        font-size: 20px;
+      }
+  </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="menu-text"><h6>Rubber Ducking</h6></li>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="Shop.html">Shop</a></li>
+            <li><a href="Calendar.html">Calendar</a></li>
+            <li><a href="Information.html" class="act">Duck uses</a></li>
+            <li><a href="Pictures.php">Pictures</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><img src="Images/rubber-duck.png"></li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="item1">
+          <img src="Images/DuckRacers.jpg">
+        </div>
+        <div class="item2">
+          <h4>Uses For Ducks</h4>
+          <p>Some people might think that rubber ducks are only for kids. Well thats a lie. There are many reasons as to why you could own a rubber duck. 
+            Some people have them as keepsakes, while others use them in their jobs. How would someone use them in their job you might ask. Well, there is a debugging method for coders called rubber duck debugging.
+            Its where the coder takes a rubber duck and explains what the code is doing to help the coder find the error in the program. Not only that but some work places have ducks for each person that makes sound in the office.
+          </p>
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rightstufanime/video/6938816333127748869" data-video-id="6938816333127748869" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@rightstufanime" href="https://www.tiktok.com/@rightstufanime?refer=embed">@rightstufanime</a> We have lots of rubber ducks at the office <a title="rubberducky" target="_blank" href="https://www.tiktok.com/tag/rubberducky?refer=embed">#rubberducky</a> <a title="duck" target="_blank" href="https://www.tiktok.com/tag/duck?refer=embed">#duck</a> <a title="ducktiktok" target="_blank" href="https://www.tiktok.com/tag/ducktiktok?refer=embed">#ducktiktok</a> <a title="rubberducktiktok" target="_blank" href="https://www.tiktok.com/tag/rubberducktiktok?refer=embed">#rubberducktiktok</a> <a title="fy" target="_blank" href="https://www.tiktok.com/tag/fy?refer=embed">#fy</a> <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="foryou" target="_blank" href="https://www.tiktok.com/tag/foryou?refer=embed">#foryou</a> <a title="foryoupage" target="_blank" href="https://www.tiktok.com/tag/foryoupage?refer=embed">#foryoupage</a> <a target="_blank" title="♬ original sound - Right Stuf Anime" href="https://www.tiktok.com/music/original-sound-6938816266215934725?refer=embed">♬ original sound - Right Stuf Anime</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+          
+        </div>
+      </div>
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
