@@ -11,7 +11,7 @@ function ArrayWork(){
     
     mean /= array.length; //divides by length
 
-    output += "<br>The mean: " + mean + "\nThe larger numbers: "; //adds mean to the output
+    output += "<br />The mean: " + mean + "<br />The larger numbers: "; //adds mean to the output
     
     
     for(var i =0; i<5; i++){ //adds the larger than the mean numbers
