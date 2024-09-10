@@ -9,7 +9,7 @@ function DatePage(){
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    var print = "The date is: " + months[month] + " " + date + ", " + year;
+    var print = "The date is: " + months[month] + " " + day + ", " + year;
     
     var e = document.getElementById("timeformat");
     var value = e.value;
@@ -18,7 +18,10 @@ function DatePage(){
     if(value == 24){
         print += "<br /> Time: " + hours + ":" + minutes;
     }else{
-        print += "<br /> Ha failed";
+        if(hours > 12){
+            hours -= 12;
+        }
+        print += "<br /> Time: " + hours +":" + minutes;
     }
 
     document.getElementById("TimeOutput").innerHTML = print;
