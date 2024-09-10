@@ -1,17 +1,18 @@
 //lab 2 javascript file
-const date = new Date();
-var month = date.getMonth();
-var day = date.getDate();
-var hours = date.getHours();
-var minutes = date.getMinutes();
-var year = date.getFullYear();
 
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-var print = "The date is: " + months[month] + " " + day + ", " + year;
     
 
 function DatePage(){
+    const date = new Date();
+    var month = date.getMonth();
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var year = date.getFullYear();
+
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var print = "The date is: " + months[month] + " " + day + ", " + year;
     var e = document.getElementById("timeformat");
     var value = e.value;
     console.log(value);
@@ -29,6 +30,16 @@ function DatePage(){
 }
 
 function DateAlert(){
+    const date = new Date();
+    var month = date.getMonth();
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var year = date.getFullYear();
+
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var print = "The date is: " + months[month] + " " + day + ", " + year;
     var e = document.getElementById("timeformat");
     var value = e.value;
     console.log(value);
