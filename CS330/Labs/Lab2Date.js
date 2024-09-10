@@ -45,12 +45,12 @@ function DateAlert(){
     console.log(value);
 
     if(value == 24){
-        print += "<br /> Time: " + hours + ":" + minutes;
+        print += "Time: " + hours + ":" + minutes;
     }else{
         if(hours > 12){
             hours -= 12;
         }
-        print += "<br /> Time: " + hours +":" + minutes;
+        print += "Time: " + hours +":" + minutes;
 }
     window.alert(print);
 }
