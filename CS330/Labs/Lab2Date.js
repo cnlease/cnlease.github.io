@@ -1,10 +1,11 @@
 //lab 2 javascript file
 function DatePage(){
-    var month = getMonth();
-    var date = getDate();
-    var hours = getHours();
-    var minutes = getMinutes();
-    var year = getYear();
+    const date = new Date();
+    var month = date.getMonth();
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var year = date.getYear();
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
