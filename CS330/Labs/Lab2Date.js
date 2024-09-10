@@ -13,7 +13,7 @@ function DatePage(){
     
     var e = document.getElementById("timeformat");
     var value = e.value;
-    console.print(value);
+    console.log(value);
 
     if(value == 24){
         print += "<br /> Time: " + hours + ":" + minutes;
