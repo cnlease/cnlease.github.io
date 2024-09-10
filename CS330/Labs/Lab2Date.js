@@ -12,8 +12,9 @@ function DatePage(){
     
     var e = document.getElementById("timeformat");
     var value = e.value;
+    console.print(value);
 
-    if(value == "24"){
+    if(value == 24){
         print += "<br /> Time: " + hours + ":" + minutes;
     }else{
         print += "<br /> Ha failed";
