@@ -10,23 +10,36 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 
 var print = "The date is: " + months[month] + " " + day + ", " + year;
     
-var e = document.getElementById("timeformat");
-var value = e.value;
-console.log(value);
 
-if(value == 24){
-    print += "<br /> Time: " + hours + ":" + minutes;
-}else{
-    if(hours > 12){
-        hours -= 12;
-    }
-    print += "<br /> Time: " + hours +":" + minutes;
-}
 function DatePage(){
+    var e = document.getElementById("timeformat");
+    var value = e.value;
+    console.log(value);
+
+    if(value == 24){
+        print += "<br /> Time: " + hours + ":" + minutes;
+    }else{
+        if(hours > 12){
+            hours -= 12;
+        }
+        print += "<br /> Time: " + hours +":" + minutes;
+    }
     document.getElementById("TimeOutput").innerHTML = print;
 
 }
 
 function DateAlert(){
+    var e = document.getElementById("timeformat");
+    var value = e.value;
+    console.log(value);
+
+    if(value == 24){
+        print += "<br /> Time: " + hours + ":" + minutes;
+    }else{
+        if(hours > 12){
+            hours -= 12;
+        }
+        print += "<br /> Time: " + hours +":" + minutes;
+}
     window.alert(print);
 }
