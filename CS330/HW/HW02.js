@@ -45,11 +45,9 @@ function init()
 
 function pointadd(a, b, count){
     if(count == sliderVal){
-        points.unshift(vec2(b, 0));
-        if(count > 0){
-            points.unshift(vec2((b-a)* Math.sqrt(3)/2, b));
-        }
         points.unshift(vec2(a, 0));
+        points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
+        points.push(vec2(b, 0));
     }else{
         pointadd((b-a) * (1/3),(b-a) * (2/3), count+1);
     }
@@ -63,7 +61,9 @@ function render() {
         vec2( 1, 0),
         ];
     points = [];
-    pointadd(-1, 1, 0);
+    pointadd((-1/3), (1/3), 0);
+    points.unshift(vertices[1]);
+    points.push(vertices[2]);
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
