@@ -44,21 +44,12 @@ function init()
 };
 
 function pointadd(a, b, count){
-    if(count == 0){
-        points.unshift(vec2(a, 0));
-        points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
-        points.push(vec2(b, 0));
-
-    }else{
         points.unshift(vec2(a,0));
         points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b,0));
-        pointadd((b-a) * (1/3),(b-a) * (2/3), count-1);
-    }
-        
-        
-
-    
+        if(count != 1){
+            pointadd((b-a) * (1/3),(b-a) * (2/3), count-1);
+        }    
 }
 
 function render() {
@@ -71,7 +62,7 @@ function render() {
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.LINES, 0, points.length );
+    gl.drawArrays( gl.LINE_STRIP, 0, points.length );
     points = [];
 
 }
