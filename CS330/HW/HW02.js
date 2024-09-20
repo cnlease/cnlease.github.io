@@ -20,7 +20,7 @@ function init()
 
     // First, initialize the vertices
 
-    var vertices = [
+    var points = [
         vec2(0, 0.5),
         vec2(1.0,  0.5)
     ];
@@ -75,5 +75,5 @@ function divideLine(a, b, count)
 function render()
 {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, positions.length);
+    gl.drawArrays( gl.LINES, 0, points.length);
 }
