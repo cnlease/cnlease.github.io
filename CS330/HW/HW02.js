@@ -1,11 +1,13 @@
 "use strict";
+var canvas;
 var gl;
 var points;
+var bufferId;
 init();
 
 function init()
 {
-    var canvas = document.getElementById( "gl-canvas" );
+    canvas = document.getElementById( "gl-canvas" );
 
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
@@ -22,14 +24,18 @@ function init()
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
-    // Associate out shader variables with our data buffer
 
-    var positionLoc = gl.getAttribLocation( program, "aPosition" );
-    gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray( positionLoc );
 
-    document.getElementById("slider").onchange = function(event) {
-        sliderVal = parseInt(event.target.value);
+    bufferId = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferId);
+    gl.bufferData(gl.ARRAY_BUFFER, 8*Math.pow(3, 6), gl.STATIC_DRAW);
+
+    var positionLoc = gl.getAttribLocation(program, "aPosition");
+    gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(positionLoc);
+
+        document.getElementById("slider").onchange = function(event) {
+        numTimesToSubdivide = parseInt(event.target.value);
         render();
     };
 
