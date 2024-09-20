@@ -1,7 +1,7 @@
 "use strict";
 var canvas;
 var gl;
-var points = new Array();
+var points;
 var bufferId;
 var sliderVal = 0;
 init();
@@ -50,13 +50,16 @@ function pointadd(a, b, count){
         points.push(vec2(b, 0));
     }else{
         pointadd((b-a) * (1/3),(b-a) * (2/3), count+1);
+        points.unshift(vec2(a, 0));
+        points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
+        points.push(vec2(b, 0));
     }
 
     
 }
 
 function render() {
-    points = new Array();
+    points = [];
     if(sliderVal > 0){
         pointadd((-1/3), (1/3), 0);
     }
@@ -66,6 +69,6 @@ function render() {
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.LINES, 0, points.length );
-    points  = new Array();
+    points = [];
 
 }
