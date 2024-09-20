@@ -45,8 +45,9 @@ function init()
 
 function pointadd(a, b, count){
         points.unshift(vec2(a,0));
-        points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b,0));
+        points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
+        
         if(count != 1){
             pointadd((b-a) * (1/3),(b-a) * (2/3), count-1);
         }    
