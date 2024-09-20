@@ -51,7 +51,7 @@ function pointadd(a, b, count){
         if(points[i][0] > b){
             points.splice(i,0,vec2(b,0));
         }
-        if(points[i[0]] > (a+ ((b-a)/2))){
+        if(points[i][0] > (a+ ((b-a)/2))){
             points.splice(i,0,vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
         }
     }
