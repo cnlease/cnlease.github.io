@@ -51,7 +51,7 @@ function pointadd(a, b, count){
         }
         points.push(vec2(b, 0));
     }else{
-        pointadd(a / (1/3), b / (2/3), count++);
+        pointadd(a / (1/3), b / (2/3), count+1);
     }
 
     
