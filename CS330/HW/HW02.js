@@ -44,7 +44,7 @@ function init()
 };
 
 function pointadd(a, b, count){
-    if(count == sliderVal){
+    if(parseInt(count) == parseInt(sliderVal)){
         points.push(vec2(a, 0));
         if(count > 0){
             points.push(vec2((b-a)* Math.sqrt(3)/2, b));
