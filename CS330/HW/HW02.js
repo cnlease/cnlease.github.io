@@ -56,14 +56,10 @@ function pointadd(a, b, count){
 }
 
 function render() {
-     var vertices=[
-        vec2( -1, 0),
-        vec2( 1, 0),
-        ];
     points = [];
     pointadd((-1/3), (1/3), 0);
-    points.unshift(vertices[1]);
-    points.push(vertices[2]);
+    points.unshift(vec2( -1, 0));
+    points.push(vec2( 1, 0));
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
