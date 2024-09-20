@@ -44,22 +44,34 @@ function init()
 };
 
 function pointadd(a, b, count){
-    points.splice(points.length /2, 0, vec2(b,0));
-    points.splice(points.length/2, 0, (vec2(a,0)));
-    points.splice(points.length / 2, 0, vec2(b,((b-a)/2)* Math.sqrt(3)/2));
+    for(let i = 0; i < points.length; i++){
+        if(points[i][0] > a){
+            points.splice(i,0,vec2(a,0));
+        }
+        if(points[i][0] > b){
+            points.splice(i,0,vec2(b,0));
+        }
+        if(points[i[0]] > (a+ ((b-a)/2))){
+            points.splice(i,0,vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
+        }
+    }
     
     if(count != 1){
-        pointadd((b-a) * (1/3),(b-a) * (2/3), count-1);
+        pointadd((-1 -a)* (1/3), (-1 - a) * (2/3), count-1);
+        pointadd((1-b)* (1/3), (1-b) * (2/3), count-1);
     }    
 }
 
 function render() {
-    points = [];
+    points = [
+        vec2(-1,0),
+        vec2(1,0)
+    ];
+    console.log("points 1" + points[0][0]);
     if(sliderVal > 0){
         pointadd((-1/3), (1/3), sliderVal);
     }
-    points.unshift(vec2( -1, 0));
-    points.push(vec2( 1, 0));
+    
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
