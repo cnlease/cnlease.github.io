@@ -57,7 +57,9 @@ function pointadd(a, b, count){
 
 function render() {
     points = [];
-    pointadd((-1/3), (1/3), 0);
+    if(sliderVal > 0){
+        pointadd((-1/3), (1/3), 0);
+    }
     points.unshift(vec2( -1, 0));
     points.push(vec2( 1, 0));
     console.log(points);
