@@ -50,6 +50,7 @@ function pointadd(a, b, count){
             points.unshift(vec2((b-a)* Math.sqrt(3)/2, b));
         }
         points.unshift(vec2(a, 0));
+        console.log(points + " round " + count);
     }else{
         pointadd(a / (1/3), b / (2/3), count+1);
     }
