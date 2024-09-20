@@ -3,7 +3,7 @@ var canvas;
 var gl;
 var points;
 var bufferId;
-var sliderVal;
+var sliderVal = 0;
 init();
 
 function init()
@@ -44,7 +44,7 @@ function init()
 };
 
 function pointadd(a, b, count){
-    if(parseInt(count) == parseInt(sliderVal)){
+    if(count == sliderVal){
         points.push(vec2(a, 0));
         if(count > 0){
             points.push(vec2((b-a)* Math.sqrt(3)/2, b));
