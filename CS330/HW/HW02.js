@@ -44,7 +44,7 @@ function init()
 };
 
 function pointadd(a, b, count){
-    for(let i = 0; i < points.length; i++){
+    for(let i = 0; i <= points.length; i++){
         if(points[i][0] > a){
             points.splice(i,0,vec2(a,0));
         }
