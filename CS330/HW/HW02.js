@@ -37,7 +37,7 @@ function init()
 };
 
 function pointadd(a, b, count){
-    sliderVal = document.getElementById("slider").value;
+    var sliderVal = document.getElementById("slider").value;
     if(count == sliderVal){
         points.push(vec2(a,0));
         points.push(vec2((b-a)* Math.sqrt(3)/2, b));
