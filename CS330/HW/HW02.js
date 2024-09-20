@@ -36,7 +36,8 @@ function init()
     render();
 };
 
-function pointadd(a, b, count, sliderVal){
+function pointadd(a, b, count){
+    sliderVal = document.getElementById("slider").value;
     if(count == sliderVal){
         points.push(vec2(a,0));
         points.push(vec2((b-a)* Math.sqrt(3)/2, b));
@@ -55,7 +56,7 @@ function render() {
         vec2( 1, 0),
         ];
     points = [];
-    pointadd(-1, 1, 0, sliderVal);
+    pointadd(-1, 1, 0);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.LINES, 0, points.length );
