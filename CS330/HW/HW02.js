@@ -46,12 +46,12 @@ function init()
 function pointadd(a, b, count){
     if(count == sliderVal){
         points.unshift(vec2(a, 0));
-        points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
+        points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b, 0));
 
     }else{
         points.unshift(vec2(a,0));
-        points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
+        points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b,0));
         pointadd((b-a) * (1/3),(b-a) * (2/3), count+1);
     }
