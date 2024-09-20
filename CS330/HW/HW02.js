@@ -45,11 +45,11 @@ function init()
 
 function pointadd(a, b, count){
     if(count == sliderVal){
-        points.push(vec2(a, 0));
+        points.unshift(vec2(b, 0));
         if(count > 0){
-            points.push(vec2((b-a)* Math.sqrt(3)/2, b));
+            points.unshift(vec2((b-a)* Math.sqrt(3)/2, b));
         }
-        points.push(vec2(b, 0));
+        points.unshift(vec2(a, 0));
     }else{
         pointadd(a / (1/3), b / (2/3), count+1);
     }
