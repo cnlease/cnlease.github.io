@@ -62,6 +62,11 @@ function init()
     gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(positionLoc);
 
+    document.getElementById("slider").onchange = function(event) {
+        sliderVal = parseInt(event.target.value);
+        render();
+    };
+
     render();
 };
 
