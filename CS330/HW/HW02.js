@@ -48,11 +48,12 @@ function pointadd(a, b, count){
         points.unshift(vec2(a, 0));
         points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b, 0));
+
     }else{
+        points.unshift(vec2(a,0));
+        
         pointadd((b-a) * (1/3),(b-a) * (2/3), count+1);
-        points.unshift(vec2(a, 0));
-        points.splice(vec2((b-a)* Math.sqrt(3)/2, b));
-        points.push(vec2(b, 0));
+        points.push(vec2(b,0));
     }
 
     
