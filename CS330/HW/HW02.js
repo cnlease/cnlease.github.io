@@ -52,7 +52,7 @@ function pointadd(a, b, count){
         points.unshift(vec2(a, 0));
         console.log(points + " round " + count);
     }else{
-        pointadd(a / (1/3), b / (2/3), count+1);
+        pointadd((b-a) / (1/3),(b-a) / (2/3), count+1);
     }
 
     
