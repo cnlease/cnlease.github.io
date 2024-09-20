@@ -1,7 +1,7 @@
 "use strict";
 var canvas;
 var gl;
-var points;
+var points = new Array();
 var bufferId;
 var sliderVal = 0;
 init();
@@ -56,7 +56,7 @@ function pointadd(a, b, count){
 }
 
 function render() {
-    points = [];
+    points = new Array();
     if(sliderVal > 0){
         pointadd((-1/3), (1/3), 0);
     }
@@ -66,6 +66,6 @@ function render() {
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.LINES, 0, points.length );
-    points = [];
+    points  = new Array();
 
 }
