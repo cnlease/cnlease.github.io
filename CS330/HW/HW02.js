@@ -44,7 +44,7 @@ function init()
 };
 
 function pointadd(a, b, count){
-    if(count == sliderVal){
+    if(count == 0){
         points.unshift(vec2(a, 0));
         points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b, 0));
@@ -53,7 +53,7 @@ function pointadd(a, b, count){
         points.unshift(vec2(a,0));
         points.splice(points.length / 2, 0, vec2((b-a)* Math.sqrt(3)/2, b));
         points.push(vec2(b,0));
-        pointadd((b-a) * (1/3),(b-a) * (2/3), count+1);
+        pointadd((b-a) * (1/3),(b-a) * (2/3), count-1);
     }
         
         
@@ -64,7 +64,7 @@ function pointadd(a, b, count){
 function render() {
     points = [];
     if(sliderVal > 0){
-        pointadd((-1/3), (1/3), 0);
+        pointadd((-1/3), (1/3), sliderVal);
     }
     points.unshift(vec2( -1, 0));
     points.push(vec2( 1, 0));
