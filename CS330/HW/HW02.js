@@ -50,7 +50,7 @@ function pointadd(a, b, count){
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
-    vertices=[
+     var vertices=[
         vec2( -1, 0),
         vec2( 1, 0),
         ];
