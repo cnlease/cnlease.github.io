@@ -79,6 +79,6 @@ function divideLine(a, b, count)
 
 function render()
 {
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.drawArrays( gl.LINES, 0, points.length);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);    
+    gl.drawArrays(gl.LINES, 1, points.length);
 }
