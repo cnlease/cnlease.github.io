@@ -22,12 +22,6 @@ function init()
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
-    // Load the data into the GPU
-
-    var bufferId = gl.createBuffer();
-    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
-
     // Associate out shader variables with our data buffer
 
     var positionLoc = gl.getAttribLocation( program, "aPosition" );
