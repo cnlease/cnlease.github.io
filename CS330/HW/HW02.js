@@ -3,6 +3,7 @@ var canvas;
 var gl;
 var points;
 var bufferId;
+var sliderVal;
 init();
 
 function init()
@@ -35,7 +36,7 @@ function init()
     gl.enableVertexAttribArray(positionLoc);
 
         document.getElementById("slider").onchange = function(event) {
-        numTimesToSubdivide = parseInt(event.target.value);
+        sliderVal = parseInt(event.target.value);
         render();
     };
 
@@ -43,7 +44,6 @@ function init()
 };
 
 function pointadd(a, b, count){
-    var sliderVal = document.getElementById("slider").value;
     if(count == sliderVal){
         points.push(vec2(a,0));
         points.push(vec2((b-a)* Math.sqrt(3)/2, b));
@@ -56,7 +56,6 @@ function pointadd(a, b, count){
 }
 
 function render() {
-    //gl.clear( gl.COLOR_BUFFER_BIT );
      var vertices=[
         vec2( -1, 0),
         vec2( 1, 0),
