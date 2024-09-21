@@ -44,17 +44,10 @@ function init()
 };
 
 function pointadd(a, b, count){
-    for(let i = 0; i <= points.length; i++){
-        if(points[i][0] > a){
-            points.splice(i,0,vec2(a,0));
-        }
-        if(points[i][0] > b){
-            points.splice(i,0,vec2(b,0));
-        }
-        if(points[i][0] > (a+ ((b-a)/2))){
-            points.splice(i,0,vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
-        }
-    }
+        points.push(vec2(a,0));
+        points.push(vec2(b,0));
+        points.push(vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
+    
     
     if(count != 1){
         pointadd((-1 -a)* (1/3), (-1 - a) * (2/3), count-1);
@@ -67,11 +60,20 @@ function render() {
         vec2(-1,0),
         vec2(1,0)
     ];
-    console.log("points 1" + points[0][0]);
     if(sliderVal > 0){
         pointadd((-1/3), (1/3), sliderVal);
     }
-    
+
+    points.sort((a, b) => {
+        // Check if both numbers are negative or both are non-negative
+        if (a < 0 && b < 0) {
+            return a - b; // Sort negatives in ascending order
+        } else if (a >= 0 && b >= 0) {
+            return a - b; // Sort non-negatives in ascending order
+        } else {
+            return a < 0 ? -1 : 1; // Place negatives before non-negatives
+        }
+    })
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
