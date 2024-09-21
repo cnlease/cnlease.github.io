@@ -44,15 +44,15 @@ function init()
 };
 
 function pointadd(a, b, count){
-        points.push(vec2(a,0));
-        points.push(vec2(b,0));
-        points.push(vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
-    
-    
-    if(count != 1){
-        pointadd((-1 -a)* (1/3), (-1 - a) * (2/3), count-1);
-        pointadd((1-b)* (1/3), (1-b) * (2/3), count-1);
-    }    
+    points.push(vec2(a,0));
+    points.push(vec2(b,0));
+    points.push(vec2(a+ ((b-a)/2),(b-a)* (Math.sqrt(3)/2)));
+
+
+if(count != 1){
+    pointadd((-1 +a)/3, (-1 +a)* (2/3), count-1);
+    pointadd((1-b)/3, (1-b)* (2/3), count-1);
+}    
 }
 
 function render() {
