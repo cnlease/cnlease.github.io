@@ -63,17 +63,7 @@ function render() {
     if(sliderVal > 0){
         pointadd((-1/3), (1/3), sliderVal);
     }
-
-    points.sort((a, b) => {
-        // Check if both numbers are negative or both are non-negative
-        if (a < 0 && b < 0) {
-            return a - b; // Sort negatives in ascending order
-        } else if (a >= 0 && b >= 0) {
-            return a - b; // Sort non-negatives in ascending order
-        } else {
-            return a < 0 ? -1 : 1; // Place negatives before non-negatives
-        }
-    })
+    points.sort(numbersort);
     console.log(points);
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
     gl.clear( gl.COLOR_BUFFER_BIT );
@@ -81,3 +71,12 @@ function render() {
     points = [];
 
 }
+
+function numbersort(a,b){
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+};
