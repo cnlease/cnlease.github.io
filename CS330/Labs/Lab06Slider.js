@@ -14,18 +14,6 @@ function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     points=[
-    vec2(-0.95,0.95),
-    vec2(0,0.95),
-    vec2(0.95,0.95),
-    vec2(-0.95,0.0),
-    vec2(0,0.0),
-    vec2(0.95,0.0),
-    vec2(-0.95,-0.95),
-    vec2(0.0,-0.95),
-    vec2(0.95,-0.95)
-    ];
-
-    colors=[
         vec2(-0.92 , -0.82),
         vec2(-0.84, -0.76),
         vec2(0.56, 0.13),
@@ -35,6 +23,18 @@ function init()
         vec2(0.47, -0.63),
         vec2(0.17, 0.60),
         vec2(0.68, 0.04)
+    ];
+
+    colors=[
+        vec4( 1.0 , 0.0 , 0.0 , 1.0 ),
+        vec4( 0.0 , 1.0 , 0.0 , 1.0 ),
+        vec4( 0.0 , 0.0 , 1.0 , 1.0 ),
+        vec4( 1.0 , 1.0 , 0.0 , 1.0 ),
+        vec4( 0.0 , 1.0 , 1.0 , 1.0 ),
+        vec4( 1.0 , 0.0 , 1.0 , 1.0 ),
+        vec4( 0.8 , 0.5 , 0.2 , 1.0 ),
+        vec4( 0.2 , 0.5 , 0.8 , 1.0 ),
+        vec4( 0.2 , 0.8 , 0.5 , 1.0 )
     ];
     
     //
@@ -83,5 +83,5 @@ function render() {
     // use the variable from the slider event listener to determine how many
     // points to render
 
-    gl.drawArrays(gl.POINTS,0,sliderVal);
+    gl.drawArrays(gl.POINTS, 0, sliderVal);
 }
