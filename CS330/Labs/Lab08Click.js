@@ -17,17 +17,18 @@ function init() {
     if (!gl) alert("WebGL 2.0 isn't available");
 
     // 2 - listener event for the button which toggles whether to save the points clicked
-    var saveWork = document.getElementById("Button1");
+    var saveWork = document.getElementById("Button1")
     saveWork.addEventListener("click", function(){
         saveWork = !saveWork;
-        points=[vec2(0,0)];
+        
+        points=[vec2(0.00,0.00)];
         render();
     });
 
     // 1 - listener event for the mouse click
     canvas.addEventListener("mousedown", function(event){
-        if(!saveWork) points=[vec2(0,0)];
-        t = vec2(2*event.clientx/canvas.width-1, 2*(canvas.height-event.clientY)/canvas.height-1);
+        if(!saveWork) points=[vec2(0.00,0.00)];
+        t = vec2(2*event.clientX/canvas.width-1, 2*(canvas.height-event.clientY)/canvas.height-1);
         points.push(t);
         render();
     });
