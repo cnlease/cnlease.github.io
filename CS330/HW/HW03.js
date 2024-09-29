@@ -6,6 +6,7 @@ var out;
 
 var t = 0.0;
 var thetaLoc;
+var add = -0.1;
 
 var delay = 100;
 var morphing = false;
@@ -18,16 +19,26 @@ function init()
     gl = canvas.getContext('webgl2');
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
-    first=[ //add more points later
-        vec2( -0.95 , -0.95 ),
-        vec2(  0.00 , -0.55 ),
-        vec2(  0.85 , -0.85 )
+    first=[ //j
+        vec2( 0.3, 0.5 ),
+        vec2( 0.6, 0.5 ),
+        vec2( 0.6, -0.5),
+        vec2(-0.3, -0.5),
+        vec2(-0.3, -0.1),
+        vec2(0.0, -0.1),
+        vec2(0.0, -0.3),
+        vec2(0.3, -0.3)
     ];
 
-    second=[
-        vec2( -0.75 ,  0.45 ),
-        vec2(  0.00 ,  0.75 ),
-        vec2( -0.35 ,  0.45 )
+    second=[ //c
+        vec2( -0.6, 0.5),
+        vec2( 0.6, 0.5),
+        vec2( 0.6, 0.2),
+        vec2(-0.4, 0.2),
+        vec2(-0.4, -0.2),
+        vec2(0.6, -0.2),
+        vec2(0.6, -0.5),
+        vec2(-0.6, -0.5)
     ];
     
     
@@ -73,13 +84,22 @@ function init()
     render();
 };
 
+
 function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
-    t += (morphing ? 0.1:0.0); 
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    
+    if(t >= 1.0){
+        add *= -1.0;
+    }else if(t <= 0.0){
+        add *= -1.0;
+    }
+    console.log(t);
+    t += (morphing ? add:0.0);
+
     gl.uniform1f(thetaLoc, t);
 
-    //gl.bufferData( gl.ARRAY_BUFFER, flatten(out), gl.STATIC_DRAW );
-    gl.drawArrays(gl.LINE_LOOP, 0, 3);
+    
+    gl.drawArrays(gl.LINE_LOOP, 0, 8);
 
     setTimeout(
         function (){requestAnimationFrame(render);}, delay
