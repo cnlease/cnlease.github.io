@@ -3,11 +3,12 @@
 
 <HEAD>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<title>Lab 04 Primitives</title>
+<title>HW 3 morphing</title>
 
 </HEAD>
 
 <BODY>
+    
 
 <canvas id="gl-canvas" width="512" height="512" style="border: 10px solid red">
 Oops ... your browser doesn't support the HTML5 canvas element
@@ -15,12 +16,17 @@ Oops ... your browser doesn't support the HTML5 canvas element
 
 <script id="vertex-shader" type="x-shader/x-vertex">
 #version 300 es
-in vec4 aPosition;
+in vec4 uPosition;
+in vec4 iPosition;
+uniform float t;
 void
 main()
 {
-  gl_PointSize = 20.0;
-  gl_Position = aPosition;
+
+  gl_Position.x = t*iPosition.x +(1.0-t)*uPosition.x;
+  gl_Position.y = t*iPosition.y + (1.0-t) *uPosition.y;
+  gl_Position.z = 0.0;
+  gl_Position.w = 1.0;
 }
 </script>
 
@@ -34,9 +40,11 @@ main()
   fColor = vec4(1.0,0.0,0.0,1.0);
 }
 </script>
+
+<button id="Morphing">Toggle Morphing On-Off</button>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MVnew.js"></script>
-<script type="text/javascript" src="Lab04Primitives.js"></script>
+<script type="text/javascript" src="HW03.js"></script>
 
 </BODY>
 </HTML>

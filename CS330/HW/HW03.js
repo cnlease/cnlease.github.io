@@ -3,6 +3,12 @@ var gl;
 var first;
 var second;
 var out;
+
+var t = 0.0;
+var thetaLoc;
+
+var delay = 100;
+var morphing = false;
 init();
 
 function init()
@@ -23,7 +29,7 @@ function init()
         vec2(  0.00 ,  0.75 ),
         vec2( -0.35 ,  0.45 )
     ];
-    out=first;
+    
     
     //
     //  Configure WebGL
@@ -45,21 +51,37 @@ function init()
     // Associate out shader variables with our data buffer
 
     var positionLoc = gl.getAttribLocation( program, "uPosition" );
-    gl.vertexAttribPointer( positionLoc , 2, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray( positionLoc );
+    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray(positionLoc);
+
+    var bufferId = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(second), gl.STATIC_DRAW );
+    
+    var positionLoc = gl.getAttribLocation( program, "iPosition" );
+    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray(positionLoc);
+
+    thetaLoc = gl.getUniformLocation(program, "t");
+
+    document.getElementById("Morphing").onclick = function () {
+        morphing = !morphing;
+    };
+
+
 
     render();
 };
 
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
+    t += (morphing ? 0.1:0.0); 
+    gl.uniform1f(thetaLoc, t);
 
-    //gl.drawArrays( gl.POINTS, 0, points.length );
-    //gl.drawArrays( gl.LINES, 0, points.length );
-    //gl.drawArrays( gl.LINE_STRIP, 0, points.length );
-    //gl.drawArrays( gl.LINE_LOOP, 0, points.length );
-    //gl.drawArrays( gl.TRIANGLES, 0, points.length );
-    //gl.drawArrays( gl.TRIANGLE_STRIP, 0, points.length );
-    //gl.drawArrays( gl.TRIANGLE_FAN, 0, points.length );
-    gl.drawArrays(gl.LINE_STRIP, 0, out.length);
+    //gl.bufferData( gl.ARRAY_BUFFER, flatten(out), gl.STATIC_DRAW );
+    gl.drawArrays(gl.LINE_LOOP, 0, 3);
+
+    setTimeout(
+        function (){requestAnimationFrame(render);}, delay
+    );
 }
