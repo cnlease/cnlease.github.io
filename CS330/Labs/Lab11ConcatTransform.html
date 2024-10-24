@@ -60,8 +60,8 @@ main()
     //gl_Position = Sx * aPosition; //stretches the box
     //gl_Position = Sx * Tx * aPosition; //moves right and stretches box
     //gl_Position = Tx * Sx * aPosition;
-    gl_Position = Sx * Tx * rz * aPosition; //makes a kite
-    //gl_Position = Sx * rz * Tx * aPosition; //heigher kite
+    //gl_Position = Sx * Tx * rz * aPosition; //makes a kite
+    gl_Position = Sx * rz * Tx * aPosition; //heigher kite
     //gl_Position = rz * Tx * Sx * aPosition; //sideways rectangle
 }
 </script>
