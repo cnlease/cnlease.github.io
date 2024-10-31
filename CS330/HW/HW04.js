@@ -15,6 +15,9 @@ var yAxis = 1;
 var zAxis = 2;
 var delay = 100;
 
+var modelViewMatrixLoc, projectionMatrixLoc;
+var modelViewMatrix, projectionMatrix;
+
 var axis = 0;
 var theta = [0, 0, 0];
 
@@ -60,17 +63,20 @@ function init()
 
     // Associate out shader variables with our data buffer
 
-    var positionLoc = gl.getAttribLocation( program, "uPosition" );
-    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
+    var positionLoc = gl.getAttribLocation( program, "iPosition" );
+    gl.vertexAttribPointer(positionLoc , 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray(positionLoc);
 
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
     gl.bufferData( gl.ARRAY_BUFFER, flatten(positions2), gl.STATIC_DRAW );
     
-    var positionLoc = gl.getAttribLocation( program, "iPosition" );
-    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
+    var positionLoc = gl.getAttribLocation( program, "uPosition" );
+    gl.vertexAttribPointer(positionLoc, 4, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray(positionLoc);
+    
+    modelViewMatrixLoc = gl.getUniformLocation(program, "uModelViewMatrix");
+    projectionMatrixLoc = gl.getUniformLocation(program, "uProjectionMatrix");
 
     thetaLoc = gl.getUniformLocation(program, "t");
 
@@ -179,21 +185,22 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    if(rotate){
-        theta[axis] += 2.0;
-    }
+    // if(rotate){
+    //     theta[axis] += 2.0;
+    // }
     if(t >= 1.0){
         add *= -1.0;
     }else if(t <= 0.0){
         add *= -1.0;
     }
     t += (morph ? add:0.0);
+    console.log(t);
     gl.uniform1f(thetaLoc, t);
-    gl.uniform3fv(thetaLoc, theta);
+    // gl.uniform3fv(thetaLoc, theta);
 
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
     
-    setTimeout(
-        function (){requestAnimationFrame(render);}, delay
-    );
+    
+    requestAnimationFrame(render);
+    
 }

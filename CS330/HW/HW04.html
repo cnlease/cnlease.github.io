@@ -49,10 +49,11 @@ void main()
 		    0.0,  0.0, 1.0, 0.0,
 		    0.0,  0.0, 0.0, 1.0);
 
-    vec4 aPosition = vec4( ((t*iPosition.x) +((1.0-t)*uPosition.x)), ((t*iPosition.y) + ((1.0-t) *uPosition.y)), ((t*iPosition.z) + ((1.0-t) *uPosition.z)), 1.0);
+    vec4 aPosition = vec4( ((t*uPosition.x) +((1.0-t)*iPosition.x)), ((t*uPosition.y) + ((1.0-t) *iPosition.y)), ((t*uPosition.z) + ((1.0-t) *iPosition.z)), 1.0);
 
     vColor = aColor;
     gl_Position = rz * ry * rx * aPosition;
+    gl_Position.z = -gl_Position.z;
 }
 </script>
 
