@@ -6,8 +6,10 @@ var gl;
 var numPositions  = 36;
 
 var positions = [];
+var positions2 = [];
 var colors = [];
-
+var add = -0.1;
+var t =0.0;
 var xAxis = 0;
 var yAxis = 1;
 var zAxis = 2;
@@ -43,22 +45,33 @@ function init()
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
-    var cBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
+    // var cBuffer = gl.createBuffer();
+    // gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
+    // gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
 
-    var colorLoc = gl.getAttribLocation( program, "aColor" );
-    gl.vertexAttribPointer( colorLoc, 4, gl.FLOAT, false, 0, 0 );
-    gl.enableVertexAttribArray( colorLoc );
+    // var colorLoc = gl.getAttribLocation( program, "aColor" );
+    // gl.vertexAttribPointer( colorLoc, 4, gl.FLOAT, false, 0, 0 );
+    // gl.enableVertexAttribArray( colorLoc );
 
-    var vBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(positions), gl.STATIC_DRAW);
+    var bufferId = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(positions), gl.STATIC_DRAW );
 
+    // Associate out shader variables with our data buffer
 
-    var positionLoc = gl.getAttribLocation(program, "aPosition");
-    gl.vertexAttribPointer(positionLoc, 4, gl.FLOAT, false, 0, 0);
+    var positionLoc = gl.getAttribLocation( program, "uPosition" );
+    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray(positionLoc);
+
+    var bufferId = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(positions2), gl.STATIC_DRAW );
+    
+    var positionLoc = gl.getAttribLocation( program, "iPosition" );
+    gl.vertexAttribPointer(positionLoc , 2, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray(positionLoc);
+
+    thetaLoc = gl.getUniformLocation(program, "t");
 
     thetaLoc = gl.getUniformLocation(program, "uTheta");
 
@@ -76,6 +89,9 @@ function init()
 
     document.getElementById("rotateToggle").onclick = function(){
         rotate = !rotate;
+    };
+    document.getElementById("morphBtn").onclick = function(){
+        morph = !morph;
     };
 
     render();
@@ -165,10 +181,16 @@ function render()
     if(rotate){
         theta[axis] += 2.0;
     }
+    if(t >= 1.0){
+        add *= -1.0;
+    }else if(t <= 0.0){
+        add *= -1.0;
+    }
+    t += (morphing ? add:0.0);
     gl.uniform3fv(thetaLoc, theta);
+    gl.uniform1f(thetaLoc, t);
 
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
     
-    gl.drawArrays(gl.LINES, numPositions, 6);
     requestAnimationFrame(render);
 }
