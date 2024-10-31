@@ -9,10 +9,11 @@ var positions = [];
 var positions2 = [];
 var colors = [];
 var add = -0.1;
-var t =0.0;
+var t = 0.0;
 var xAxis = 0;
 var yAxis = 1;
 var zAxis = 2;
+var delay = 100;
 
 var axis = 0;
 var theta = [0, 0, 0];
@@ -45,13 +46,13 @@ function init()
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
-    // var cBuffer = gl.createBuffer();
-    // gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-    // gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
+    var cBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
 
-    // var colorLoc = gl.getAttribLocation( program, "aColor" );
-    // gl.vertexAttribPointer( colorLoc, 4, gl.FLOAT, false, 0, 0 );
-    // gl.enableVertexAttribArray( colorLoc );
+    var colorLoc = gl.getAttribLocation( program, "aColor" );
+    gl.vertexAttribPointer( colorLoc, 4, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray( colorLoc );
 
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
@@ -118,16 +119,16 @@ function colorCube2()
 
 function quad(a, b, c, d, e)
 {
-    if(e = 1){
+    if(e == 1){
         var vertices = [
-            vec4(-0.5, -0.5,  0.5, 1.0),
-            vec4(-0.5,  0.5,  0.5, 1.0),
-            vec4(0.5,  0.5,  0.5, 1.0),
-            vec4(0.5, -0.5,  0.5, 1.0),
-            vec4(-0.5, -0.5, -0.5, 1.0),
-            vec4(-0.5,  0.5, -0.5, 1.0),
-            vec4(0.5,  0.5, -0.5, 1.0),
-            vec4(0.5, -0.5, -0.5, 1.0)
+            vec4(-0.5, -0.5,  1.5, 1.0),
+            vec4(-0.5,  0.5,  1.5, 1.0),
+            vec4(0.5,  0.5,  1.5, 1.0),
+            vec4(0.5, -0.5,  1.5, 1.0),
+            vec4(-0.5, -0.5, 0.5, 1.0),
+            vec4(-0.5,  0.5, 0.5, 1.0),
+            vec4(0.5,  0.5, 0.5, 1.0),
+            vec4(0.5, -0.5, 0.5, 1.0)
         ];
     }else{
         var vertices=[ 
@@ -163,7 +164,7 @@ function quad(a, b, c, d, e)
     var indices = [a, b, c, a, c, d];
 
     for ( var i = 0; i < indices.length; ++i ) {
-        if(e = 1){
+        if(e == 1){
             positions.push( vertices[indices[i]]);
         }else{
             positions2.push( vertices[indices[i]]);
@@ -186,11 +187,13 @@ function render()
     }else if(t <= 0.0){
         add *= -1.0;
     }
-    t += (morphing ? add:0.0);
-    gl.uniform3fv(thetaLoc, theta);
+    t += (morph ? add:0.0);
     gl.uniform1f(thetaLoc, t);
+    gl.uniform3fv(thetaLoc, theta);
 
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
     
-    requestAnimationFrame(render);
+    setTimeout(
+        function (){requestAnimationFrame(render);}, delay
+    );
 }

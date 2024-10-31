@@ -15,7 +15,7 @@
 <script id="vertex-shader" type="x-shader/x-vertex">
 #version 300 es
 
-in  vec4 aPosition;
+uniform vec4 aPosition;
 in vec4 iPosition;
 in vec4 uPosition;
 in  vec4 aColor;
@@ -49,11 +49,10 @@ void main()
 		    0.0,  0.0, 1.0, 0.0,
 		    0.0,  0.0, 0.0, 1.0);
 
-    vec4 aPosition = vec4((t*iPosition.x) +((1.0-t)*uPosition.x), (t*iPosition.y) + ((1.0-t) *uPosition.y), (t*iPosition.z) + ((1.0-t) *uPosition.z), 1.0);
+    vec4 aPosition = vec4( ((t*iPosition.x) +((1.0-t)*uPosition.x)), ((t*iPosition.y) + ((1.0-t) *uPosition.y)), ((t*iPosition.z) + ((1.0-t) *uPosition.z)), 1.0);
 
     vColor = aColor;
     gl_Position = rz * ry * rx * aPosition;
-    //gl_Position.z = -gl_Position.z;
 }
 </script>
 
