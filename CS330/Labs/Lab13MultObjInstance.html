@@ -21,17 +21,17 @@ void main()
    transX += gl_InstanceID;
     // Remeber: thse matrices are column-major
     mat4 Tx = mat4(1.0,  0.0,  0.0, 0.0,
-		   0.0,  1.0,  0.0, 0.0,
-		   0.0,  0.0,  1.0, 0.0,
-		transX,  0.0,  0.0, 1.0);
+		           0.0,  1.0,  0.0, 0.0,
+		           0.0,  0.0,  1.0, 0.0,
+		           transX,  0.0,  0.0, 1.0);
     mat4 Scale = mat4(0.5,  0.0,  0.0, 0.0,
-		      0.0,  0.5,  0.0, 0.0,
-		      0.0,  0.0,  0.5, 0.0,
-		      0.0,  0.0,  0.0, 1.0);
+		              0.0,  0.5,  0.0, 0.0,
+		              0.0,  0.0,  0.5, 0.0,
+		              0.0,  0.0,  0.0, 1.0);
     mat4 MVlocal = mat4(1.0,  0.0,  0.0, 0.0,
-		        0.0,  1.0,  0.0, 0.0,
-		        0.0,  0.0,  1.0, 0.0,
-		        0.0,  0.0,  0.0, 1.0);
+		                0.0,  1.0,  0.0, 0.0,
+		                0.0,  0.0,  1.0, 0.0,
+		                0.0,  0.0,  0.0, 1.0);
     MVlocal = uModelViewMatrix*Tx*Scale;
     gl_Position = uProjectionMatrix*MVlocal*aPosition;
     vColor = aColor;
@@ -52,7 +52,12 @@ main()
     fColor = vColor;
 }
 </script>
-
+<p>Instance ID is a built in counter that gives an id to each of the cubes.
+    TransX is made to be the value that is the translation across the x plane.
+    modelViewMatrix is the combination of both the model and the view matricies.
+    Instance ID works with TransX to find the correct position of the cubes along the x-axis,
+    while the modelViewMatrix is creating the cubes to how the angle and position is.
+</p>
 <script src="../Common/initShaders.js"></script>
 <script src="../Common/MVnew.js"></script>
 <script src="Lab13MultObjInstance.js"></script>
