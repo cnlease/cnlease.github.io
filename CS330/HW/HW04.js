@@ -8,8 +8,8 @@ var numPositions  = 36;
 var positions = [];
 var positions2 = [];
 var colors = [];
-var add = -0.1;
-var t = 0.0;
+var add = 0.1;
+var t = 0.1;
 var xAxis = 0;
 var yAxis = 1;
 var zAxis = 2;
@@ -22,6 +22,7 @@ var axis = 0;
 var theta = [0, 0, 0];
 
 var thetaLoc;
+var tLoc;
 
 var rotate = false;
 var morph = false;
@@ -78,7 +79,7 @@ function init()
     modelViewMatrixLoc = gl.getUniformLocation(program, "uModelViewMatrix");
     projectionMatrixLoc = gl.getUniformLocation(program, "uProjectionMatrix");
 
-    thetaLoc = gl.getUniformLocation(program, "t");
+    tLoc = gl.getUniformLocation(program, "t");
 
     thetaLoc = gl.getUniformLocation(program, "uTheta");
 
@@ -104,6 +105,7 @@ function init()
     render();
 }
 
+
 function colorCube()
 {
     quad(1, 0, 3, 2, 1);
@@ -125,31 +127,26 @@ function colorCube2()
 
 function quad(a, b, c, d, e)
 {
-    if(e == 1){
-        var vertices = [
-            vec4(-0.5, -0.5,  1.5, 1.0),
-            vec4(-0.5,  0.5,  1.5, 1.0),
-            vec4(0.5,  0.5,  1.5, 1.0),
-            vec4(0.5, -0.5,  1.5, 1.0),
-            vec4(-0.5, -0.5, 0.5, 1.0),
-            vec4(-0.5,  0.5, 0.5, 1.0),
-            vec4(0.5,  0.5, 0.5, 1.0),
-            vec4(0.5, -0.5, 0.5, 1.0)
-        ];
-    }else{
-        var vertices=[ 
-            vec4( -0.6, 0.5, 1.5, 1.0),
-            vec4( 0.6, 0.5, 1.5, 1.0),
-            vec4( 0.6, 0.2, 1.5, 1.0),
-            vec4(-0.4, 0.2, 1.0, 1.0),
-            vec4(-0.4, -0.2, 1.0, 1.0),
-            vec4(0.6, -0.2, 1.0, 1.0),
-            vec4(0.6, -0.5, 1.5, 1.0),
-            vec4(-0.6, -0.5, 1.5, 1.0)
-        ];
-    }
-    
-
+    var vertices1 = [
+        vec4(-0.5, -0.5,  1.5, 1.0),
+        vec4(-0.5,  0.5,  1.5, 1.0),
+        vec4(0.5,  0.5,  1.5, 1.0),
+        vec4(0.5, -0.5,  1.5, 1.0),
+        vec4(-0.5, -0.5, 0.5, 1.0),
+        vec4(-0.5,  0.5, 0.5, 1.0),
+        vec4(0.5,  0.5, 0.5, 1.0),
+        vec4(0.5, -0.5, 0.5, 1.0)
+    ];
+    var vertices2=[ 
+        vec4(-0.8, -0.8,  1.8, 1.0),
+        vec4(-0.8,  0.8,  1.8, 1.0),
+        vec4(0.8,  0.8,  1.8, 1.0),
+        vec4(0.8, -0.8,  1.8, 1.0),
+        vec4(-0.8, -0.8, 0.8, 1.0),
+        vec4(-0.8,  0.8, 0.8, 1.0),
+        vec4(0.8,  0.8, 0.8, 1.0),
+        vec4(0.8, -0.8, 0.8, 1.0)
+    ];
     var vertexColors = [
         vec4(0.0, 0.0, 0.0, 1.0),  // black
         vec4(1.0, 0.0, 0.0, 1.0),  // red
@@ -169,11 +166,11 @@ function quad(a, b, c, d, e)
 
     var indices = [a, b, c, a, c, d];
 
-    for ( var i = 0; i < indices.length; ++i ) {
+    for (var i = 0; i < indices.length; ++i ) {
         if(e == 1){
-            positions.push( vertices[indices[i]]);
+            positions.push( vertices1[indices[i]]);
         }else{
-            positions2.push( vertices[indices[i]]);
+            positions2.push( vertices2[indices[i]]);
         }
 
         // for solid colored faces use
@@ -185,22 +182,28 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    // if(rotate){
-    //     theta[axis] += 2.0;
-    // }
-    if(t >= 1.0){
+    if(rotate){
+        theta[axis] += 2.0;
+    }
+    gl.uniform3fv(thetaLoc, theta);
+    
+    if(t > 1.0){
         add *= -1.0;
-    }else if(t <= 0.0){
+    }else if(t < 0.0){
         add *= -1.0;
     }
     t += (morph ? add:0.0);
     console.log(t);
-    gl.uniform1f(thetaLoc, t);
-    // gl.uniform3fv(thetaLoc, theta);
+    gl.uniform1f(tLoc, t);
+    
 
     gl.drawArrays(gl.TRIANGLES, 0, numPositions);
     
     
-    requestAnimationFrame(render);
+    
+    setTimeout(
+        function (){requestAnimationFrame(render);}, delay
+    );
+    
     
 }
