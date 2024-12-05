@@ -6,17 +6,17 @@ var flag=true;
 var points;
 // triangle on right on top
 //
-points=[
-    vec4( -0.75 , -0.50 , 0.0 , 1.0  ),
-    vec4(  0.25 ,  0.00 , 0.0 , 1.0  ),
-    vec4( -0.75 ,  0.50 , 0.0 , 1.0  ),
-    vec4( -0.25 ,  0.00 , 0.0 , 1.0  ),
-    vec4(  0.75 , -0.50 , 0.0 , 1.0  ),
-    vec4(  0.75 ,  0.50 , 0.0 , 1.0  )
-];
+// points=[
+//     vec4( -0.75 , -0.50 , 0.0 , 1.0  ),
+//     vec4(  0.25 ,  0.00 , 0.0 , 1.0  ),
+//     vec4( -0.75 ,  0.50 , 0.0 , 1.0  ),
+//     vec4( -0.25 ,  0.00 , 0.0 , 1.0  ),
+//     vec4(  0.75 , -0.50 , 0.0 , 1.0  ),
+//     vec4(  0.75 ,  0.50 , 0.0 , 1.0  )
+// ];
 //
 // triangle on left on top
-/*
+
 points=[
     vec4( -0.25 ,  0.00 , 0.0 , 1.0  ),
     vec4(  0.75 , -0.50 , 0.0 , 1.0  ),
@@ -25,7 +25,7 @@ points=[
     vec4(  0.25 ,  0.00 , 0.0 , 1.0  ),
     vec4( -0.75 ,  0.50 , 0.0 , 1.0  )
 ];
-*/
+
 var positionsArray = [];
 
 var colors;
@@ -57,6 +57,7 @@ function init()
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    
 
     //  Load shaders and initialize attribute buffers
 
